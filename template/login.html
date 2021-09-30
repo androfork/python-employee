@@ -1,0 +1,83 @@
+{% block content %}
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- here adding css and js files -->
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ABC Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css/owl.carousel.min.css'%}"> 
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/css/style.css'%}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<body>
+    
+    <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="{% static 'img/undraw_remotely_2j6y.svg'%} " alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-6 contents">
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="mb-4">
+                  <h3>Sign In</h3>
+                  <p class="mb-4">Welcome  to  ABC</p>
+                </div>
+
+              <!-- form for login page -->
+              <form  method="post">
+                {% csrf_token %}
+                  <div class="form-group first">
+                    <label for="username">Username / Email</label>
+                    <input type="text" class="form-control" name="username" id="username">
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                  </div>
+
+                  <input type="submit" value="Log In" class="btn btn-block btn-primary">
+  
+                  <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
+                
+                  <div class="social-login">
+                    <a href="https://www.facebook.com/" class="facebook"> <span class="icon-facebook mr-3 "></span></a>
+                    <a href="https://www.twitter.com/" class="twitter"><span class="icon-twitter mr-3"></span></a>
+                    <a href="https://www.google.com/" class="google"><span class="icon-google mr-3"></span></a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!--message passing for user  -->
+    <script>
+      if(message != 0)  
+        swal ("{{message}}");
+    </script>
+  
+    <div>
+      {% for message in messages %}
+            {{ messages }}   
+      {% endfor %}
+    </div> 
+
+      <script src="{% static 'js/js/jquery-3.3.1.min.js'%}"></script>
+      <script src="{% static 'js/js/popper.min.js'%}"></script>
+      <script src="{% static 'js/js/bootstrap.min.js'%}"></script>
+      <script src="{% static 'js/js/main.js'%}"></script>
+
+</body>
+</html>
+{% endblock %}
